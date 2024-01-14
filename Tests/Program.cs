@@ -1,16 +1,22 @@
-﻿int[] arr = new int[10];
+﻿double[] arr = new double[10];
 
-int Count2090(int[] array){
-    int count = 0;
-    for(int i = 0; i < array.Length; i++){
-        if(array[i] >= 20 && array[i] <= 90) count++;
+double MaxMinusMin(double[] array){
+    double max = array[0], min = array[0];
+    for(int i = 1; i < array.Length; i++){
+        if(array[i] > max) max = array[i];
+        if(array[i] < min) min = array[i];
     }
-    return count;
+    return max - min;
 }
+
 Random rand = new Random();
+double n = rand.Next(11, 1002);
 for (int i = 0; i < 10; i++){
-    array[i] = rand.Next(1, 101);
-    Console.WriteLine($"{arr[i] }");
+    n = rand.Next(11, 1002);
+    while(n % 10 == 0) n = rand.Next(11, 1002);    
+    arr[i] = n/10;
+    Console.Write($"{arr[i]}" + " ");
 }
-Console.WriteLine(Count2090(*arr));
+Console.WriteLine();
+Console.WriteLine(MaxMinusMin(arr));
 
