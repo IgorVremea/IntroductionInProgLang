@@ -1,17 +1,26 @@
-﻿void RecursNatural(int M, int N){
-    if( N == 0 || M == 0) return;
-    if( M == N ) {
-        Console.Write($"{M} ");
+﻿// Инициализация массива
+int[] arr = new int[10];
+
+Random rand = new Random();
+Console.Write("Было: ");
+for (int i = 0; i < 10; i++){
+    arr[i] = rand.Next(1, 101);
+    Console.Write($"{arr[i]}" + ' ');
+}
+Console.WriteLine();
+
+// Реализация рекурсии
+void ShowRecursArr(int[] arr){
+    if(arr.Length == 1) {
+        Console.Write($"{arr[0]} ");
         return;
     }
-    if( N > M){
-        RecursNatural(M, N-1);
-        Console.Write($"{N} ");
-    } else {
-        RecursNatural(M-1, N);
-        Console.Write($"{M} ");
-    }
-    
+    string str = string.Join(' ', arr);
+    // Чойта не допер до более простого решения, если не использовать в функции дополнительный параметр...
+    ShowRecursArr(Array.ConvertAll(str.Substring(str.IndexOf(' ') + 1).Split(' '), int.Parse));
+    Console.Write($"{arr[0]}" + ' ');
 }
 
-RecursNatural(20, -10);
+// Проверка результата
+Console.Write("Стало: ");
+ShowRecursArr(arr);
