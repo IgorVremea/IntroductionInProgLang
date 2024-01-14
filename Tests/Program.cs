@@ -1,8 +1,16 @@
-﻿int Ack(int m, int n){
-    if(m == 0) return n+1;
-    if(m > 0 && n == 0) return Ack(m-1, 1);
-    if(m > 0 && n > 0) return Ack(m-1, Ack(m, n-1));
-    return -1;
+﻿int CountEven(int[] array){
+    int sum =0;
+    for(int i = 0; i < array.Length; i++){
+        if(array[i] % 2 == 0) sum++;
+    }
+    return sum;
 }
 
-Console.WriteLine(Ack(2,2));
+int[] arr = new int[10];
+Random rand = new Random();
+for (int i = 0; i < 10; i++){
+    arr[i] = rand.Next(100, 1000);
+    Console.Write($"{arr[i]}" + " ");
+}
+Console.WriteLine();
+Console.WriteLine("Четных чисел в мессиве: " + $"{CountEven(arr)}");
