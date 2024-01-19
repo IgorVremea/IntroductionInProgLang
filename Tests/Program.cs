@@ -1,16 +1,15 @@
-﻿int CountEven(int[] array){
-    int sum =0;
-    for(int i = 0; i < array.Length; i++){
-        if(array[i] % 2 == 0) sum++;
-    }
-    return sum;
-}
-
-int[] arr = new int[10];
+﻿int[] arr = new int[11];
 Random rand = new Random();
-for (int i = 0; i < 10; i++){
+for (int i = 0; i < arr.Length; i++){
     arr[i] = rand.Next(100, 1000);
     Console.Write($"{arr[i]}" + " ");
 }
+for(int i = 0; i < arr.Length / 2; i++){
+    int temp = arr[i];
+    arr[i] = arr[arr.Length-i-1];
+    arr[arr.Length-i-1] = temp;
+}
 Console.WriteLine();
-Console.WriteLine("Четных чисел в мессиве: " + $"{CountEven(arr)}");
+for (int i = 0; i < arr.Length; i++){
+    Console.Write($"{arr[i]}" + " ");
+}
